@@ -1,0 +1,6 @@
+.boxBtn {
+  display: flex;
+  gap: 5px;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
