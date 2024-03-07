@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 import { getFilter } from "../../redux/selectors";
-import { setFilter } from "../../redux/filtersSlice";
+import { changeFilter } from "../../redux/filtersSlice";
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export const Filter = () => {
 
   const onFilterChange = (e) => {
     const value = e.target.value;
-    dispatch(setFilter(value));
+    dispatch(changeFilter(value));
   };
   return (
     <label className={css.label}>

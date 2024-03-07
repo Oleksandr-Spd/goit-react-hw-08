@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 
-import { ContactItem } from "../ContactITem/ContactItem";
 import css from "./ContactList.module.css";
 import { getContacts, getFilter } from "../../redux/selectors";
 import { NoContactsMessage } from "../NoContactMessage/NoContactMessage";
 import { statusFilters } from "../../redux/constants";
+import { Contact } from "../Contact/Contact";
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -23,7 +23,7 @@ export const ContactList = () => {
       {getVisibleContacts.length > 0 ? (
         <ul className={css.contactsList}>
           {getVisibleContacts.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
+            <Contact key={contact.id} contact={contact} />
           ))}
         </ul>
       ) : (
