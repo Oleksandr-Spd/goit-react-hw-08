@@ -33,7 +33,9 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     const existingContact = contacts.find(
-      (contact) => contact.name.toLowerCase() === values.name.toLowerCase()
+      (contact) =>
+        contact.name.toLowerCase() === values.name.toLowerCase() &&
+        contact.number === values.number
     );
 
     if (existingContact) {
