@@ -1,10 +1,10 @@
 import toast from "react-hot-toast";
-import { deleteContact } from "../../redux/contactsSlice";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 import { faTrashCan, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
+import { deleteContact } from "../../redux/operations";
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();

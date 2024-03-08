@@ -1,114 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { nanoid } from "nanoid";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+
+import { addContact, deleteContact, fetchContacts } from "./operations";
+
+const handlePending = (state) => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: { items: [] },
-  reducers: {
-    addContact: {
-      reducer(state, action) {
-        state.items.push(action.payload);
-      },
-      prepare(data) {
-        return {
-          payload: {
-            id: nanoid(),
-            name: data.name,
-            number: data.number,
-            category: data.category,
-          },
-        };
-      },
-    },
+  initialState: {
+    items: [],
+    loading: false,
+    error: null,
+  },
 
-    deleteContact: (state, action) => {
-      state.items = state.items.filter(
-        (contact) => contact.id !== action.payload
-      );
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchContacts.pending, handlePending)
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, handleRejected)
+      .addCase(deleteContact.pending, handlePending)
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items = state.items.filter(
+          (contact) => contact.id !== action.payload.id
+        );
+      })
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(addContact.pending, handlePending)
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items.push(action.payload);
+      })
+      .addCase(addContact.rejected, handleRejected);
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
-
-const persistConfig = {
-  key: "contact",
-  storage,
-};
-export const contactsReducer = persistReducer(
-  persistConfig,
-  contactsSlice.reducer
-);
-
-// export const contactsReducer = contactsSlice.reducer;
-
-//********************************************2 */************************** */
-// const contactsInitialState = {
-//   items: [],
-// };
-
-// export const addContact = createAction("items/addContact", (data) => {
-//   return {
-//     payload: {
-//       id: nanoid(),
-//       name: data.name,
-//       number: data.number,
-//       category: data.category,
-//     },
-//   };
-// });
-// export const deleteContact = createAction("items/deleteContact");
-
-// export const contactsReducer = createReducer(
-//   contactsInitialState,
-//   (builder) => {
-//     builder
-//       .addCase(addContact, (state, action) => {
-//         state.items.push(action.payload);
-//       })
-//       .addCase(deleteContact, (state, action) => {
-//         state.items = state.items.filter(
-//           (contact) => contact.id !== action.payload
-//         );
-//       });
-//   }
-// );
-//******************************* 1 */************************************* */
-
-// export const contactsReducer = (state = contactsInitialState, action) => {
-//   switch (action.type) {
-//     case "items/addContact":
-//       return {
-//         ...state,
-//         items: [...state.items, action.payload],
-//       };
-//     case "items/deleteContact":
-//       return {
-//         ...state,
-//         items: state.items.filter((contact) => contact.id !== action.payload),
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-// export const addContact = (data) => {
-//   return {
-//     type: "items/addContact",
-//     payload: {
-//       id: nanoid(),
-//       name: data.name,
-//       number: data.number,
-//       category: data.category,
-//     },
-//   };
-// };
-
-// export const deleteContact = (contactID) => {
-//   return {
-//     type: "items/deleteContact",
-//     payload: contactID,
-//   };
-// };
+export const contactsReducer = contactsSlice.reducer;

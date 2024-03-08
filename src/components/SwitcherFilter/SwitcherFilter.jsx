@@ -12,7 +12,6 @@ export const SwitcherFilter = () => {
   const handleCategoryFilter = (category) => {
     dispatch(toggleCategory(category));
   };
-
   return (
     <div className={css.boxBtn}>
       <Btn

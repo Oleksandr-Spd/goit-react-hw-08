@@ -1,7 +1,7 @@
 export const statusFilters = {
-  all: "ll",
-  family: "Family",
-  friends: "Friends",
-  job: "Job",
-  other: "Other",
+  all: "all",
+  family: "family",
+  friends: "friends",
+  job: "job",
+  other: "other",
 };

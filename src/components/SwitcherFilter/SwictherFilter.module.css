@@ -4,3 +4,7 @@
   margin-right: auto;
   margin-bottom: 20px;
 }
+.btn:active {
+  background-color: #1565c0;
+  color: #fff;
+}

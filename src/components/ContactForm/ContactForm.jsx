@@ -2,7 +2,6 @@ import css from "./ContactForm.module.css";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
 import toast from "react-hot-toast";
 import { getContacts } from "../../redux/selectors";
 // import NumberInput from "../NumberInput/NumberInput";
@@ -14,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { CategorySwitcher } from "../CategorySwitcher/CategorySwitcher";
+import { addContact } from "../../redux/operations";
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
