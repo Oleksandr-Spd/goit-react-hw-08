@@ -2,12 +2,12 @@ import css from "./Filter.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { getFilter } from "../../redux/selectors";
+import { selectFilter } from "../../redux/selectors";
 import { changeFilter } from "../../redux/filtersSlice";
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(getFilter);
+  const filters = useSelector(selectFilter);
 
   const onFilterChange = (e) => {
     const value = e.target.value;

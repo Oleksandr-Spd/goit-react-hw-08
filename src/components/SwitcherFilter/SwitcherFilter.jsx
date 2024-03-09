@@ -1,13 +1,14 @@
 import { Btn } from "../Btn/Btn";
 import css from "./SwictherFilter.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategory } from "../../redux/selectors";
+import { selectContacts } from "../../redux/selectors";
 import { statusFilters } from "../../redux/constants";
 import { toggleCategory } from "../../redux/categorySlice";
+import { Counter } from "../Counter/Counter";
 
 export const SwitcherFilter = () => {
   const dispatch = useDispatch();
-  const category = useSelector(getCategory);
+  const category = useSelector(selectContacts);
 
   const handleCategoryFilter = (category) => {
     dispatch(toggleCategory(category));
@@ -44,6 +45,7 @@ export const SwitcherFilter = () => {
       >
         Other
       </Btn>
+      <Counter />
     </div>
   );
 };

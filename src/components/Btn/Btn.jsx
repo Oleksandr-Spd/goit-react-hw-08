@@ -7,7 +7,6 @@ export const Btn = ({
   children,
   ...otherProps
 }) => {
-  console.log(selected);
   return (
     <button
       className={clsx(css.btn, {

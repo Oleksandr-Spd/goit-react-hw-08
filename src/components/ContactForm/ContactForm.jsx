@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { getContacts } from "../../redux/selectors";
+import { selectContacts } from "../../redux/selectors";
 // import NumberInput from "../NumberInput/NumberInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -29,7 +29,7 @@ const contactSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values, { resetForm }) => {
     const existingContact = contacts.find(

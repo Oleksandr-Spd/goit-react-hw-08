@@ -6,7 +6,7 @@ import { Filter } from "../Filter/Filter";
 import { ContactList } from "../ContactList/ContactList";
 import { ContactForm } from "../ContactForm/ContactForm";
 import { NoContactsMessage } from "../NoContactMessage/NoContactMessage";
-import { getContacts, getState } from "../../redux/selectors";
+import { selectState, selectVisibleContacts } from "../../redux/selectors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressBook } from "@fortawesome/free-regular-svg-icons";
 import { SwitcherFilter } from "../SwitcherFilter/SwitcherFilter";
@@ -15,10 +15,11 @@ import { Error } from "../Error/Error";
 import { fetchContacts } from "../../redux/operations";
 import css from "./App.module.css";
 
+
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const { loading, error } = useSelector(getState);
+  const contacts = useSelector(selectVisibleContacts);
+  const { loading, error } = useSelector(selectState);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -37,11 +38,10 @@ export const App = () => {
           </h2>
           {loading && <Loader />}
           <SwitcherFilter />
-          {contacts.length === 0 && !Loader ? (
-            <NoContactsMessage />
-          ) : (
-            <ContactList />
-          )}
+
+          {contacts.length === 0 && <NoContactsMessage />}
+
+          {contacts.length > 0 && <ContactList />}
         </div>
       )}
       <Toaster />

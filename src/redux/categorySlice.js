@@ -13,5 +13,3 @@ const categorySlice = createSlice({
 
 export const { toggleCategory } = categorySlice.actions;
 export const categoryReducer = categorySlice.reducer;
-
-
