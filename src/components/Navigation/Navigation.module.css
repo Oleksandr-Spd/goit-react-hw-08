@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+}
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  color: var(--primary-light-color);
+}
+
+.link:hover {
+  text-decoration: underline;
+}

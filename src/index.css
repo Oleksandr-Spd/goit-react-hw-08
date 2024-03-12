@@ -4,20 +4,12 @@
   font-weight: 400;
   color-scheme: light dark;
   color: #010101;
-  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --primary-dark-color: #242424;
+  --primary-light-color: #f4f4f4;
 }
 
 body {
@@ -34,17 +26,54 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+h2 {
+  font-size: 2em;
+  line-height: 1.1;
+}
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 8px 12px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+ul {
+  list-style-type: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+  color: var(--primary-light-color);
+  background: var(--primary-dark-color);
+  font-size: 24px;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+img {
+  display: block;
+  /* width: 100%;
+  height: auto; */
+}
+
+form {
+  width: 500px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+input {
+  padding-left: 10px;
 }
 input,
 select {
@@ -56,6 +85,14 @@ select {
   position: relative;
 }
 
+label {
+  font-size: 15;
+}
+
+label:hover,
+label:focus-within {
+  color: #4caf50;
+}
 input:hover,
 input:focus,
 select:hover,
@@ -64,8 +101,26 @@ select:focus {
   outline: none;
 }
 
-ul {
-  list-style-type: none;
+input:invalid + span:after {
+  position: absolute;
+  content: "✖";
+  padding-left: 5px;
+  color: #8b0000;
+}
+
+input:valid + span:after {
+  position: absolute;
+  content: "✓";
+  padding-left: 5px;
+  color: #009000;
+}
+
+.active {
+  padding: 6px 12px;
+  border-radius: 30px;
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--primary-dark-color);
+  background: var(--primary-light-color);
 }
 
 @media (prefers-color-scheme: light) {

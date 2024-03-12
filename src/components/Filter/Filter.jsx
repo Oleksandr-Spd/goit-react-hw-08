@@ -14,7 +14,7 @@ export const Filter = () => {
     dispatch(changeFilter(value));
   };
   return (
-    <label className={css.label}>
+    <label>
       Find contact by name
       <input
         className={css.input}

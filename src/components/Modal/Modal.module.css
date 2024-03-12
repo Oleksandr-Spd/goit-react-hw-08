@@ -1,0 +1,7 @@
+.modal {
+  height: 200px;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  border: 1px solid var(--primary-dark-color);
+}

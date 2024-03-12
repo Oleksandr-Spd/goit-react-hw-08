@@ -1,6 +1,6 @@
 export const Error = () => {
   return (
-    <div>
+    <div style={{ marginTop: "110px" }}>
       <h1>
         Oops! Something went wrong :(
         <br />
