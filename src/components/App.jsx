@@ -6,13 +6,13 @@ import LoginPage from "../pages/LoginPage";
 import { Error } from "./Error/Error";
 import ContactsPage from "../pages/ContactsPage";
 import { useDispatch } from "react-redux";
-import { useAuth } from "../hooks/useAuth";
-import { refreshUser } from "../redux/auth/operations";
 import { Loader } from "./Loader/Loader";
 import { useEffect } from "react";
 import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 import { PrivateRoute } from "./RestrictedRoute/PrivateRoute/PrivateRoute";
 import { Layout } from "./Layout";
+import { useAuth } from "../hooks/useAuth";
+import { refreshUser } from "../redux/auth/operations";
 
 const App = () => {
   const dispatch = useDispatch();
